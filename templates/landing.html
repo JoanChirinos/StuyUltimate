@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>Landing &bull; Ultimate</title>
+
+</head>
+
+<body class="d-flex flex-column h-100">
+  <main role="main" class="flex-shrink-0">
+    <div class="container-fluid">
+      <h1 class="display-1 text-center">Stuy Ultimate</h1>
+
+      <div class="container">
+        {% set msgs=get_flashed_messages(with_categories=true) %}
+        {% for category, msg in msgs %}
+        <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+          {{msg}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="container">
+        <div class="card">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons" role="group" aria-label="Group of Login and Register buttons">
+            <label class="btn btn-success active" id="loginButton">
+                <input type="radio" name="options" autocomplete="off" checked>Log In
+              </label>
+            <label class="btn btn-success" id="registerButton">
+                <input type="radio" name="options" autocomplete="off">Register
+              </label>
+          </div>
+
+          <div class="card-body" id="login" style="display: block">
+            <form action="/login" method="post">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="usernameLogin" name="username" placeholder="Username" autocomplete="name" pattern="^\S{8,}" title="At least 8 characters, and no whitespace." required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="passwordLogin" name="password" placeholder="Password" pattern="^\S{8,}" title="At least 8 characters, and no whitespace." required>
+              </div>
+              <button type="submit" class="btn btn-block btn-success">Log In</button>
+            </form>
+          </div>
+
+          <div class="card-body" id="register" style="display: none">
+            <form action="/register" method="post">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" autocomplete="name" pattern="^\S+ \S+" title="First Last" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" autocomplete="email" required>
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="usernameRegister" name="username" placeholder="Username" autocomplete="username" pattern="^\S{8,}" title="At least 8 characters, and no whitespace." required>
+                <small class="form-text text-muted">At least 8 characters, and no whitespace.</small>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="passwordRegister" name="password" placeholder="Password" pattern="^\S{8,}" title="At least 8 characters, and no whitespace." required>
+                <small class="form-text text-muted">At least 8 characters, and no whitespace.</small>
+              </div>
+              <div class="form-group">
+                <label for="passwordCheck">Verify Password</label>
+                <input type="password" class="form-control" id="passwordCheck" name="passwordCheck" placeholder="Enter your password again" pattern="^\S{8,}" title="At least 8 characters, and no whitespace." required>
+                <small class="form-text text-muted">Must match the password above.</small>
+              </div>
+              <button type="submit" class="btn btn-block btn-success" id="registerB" disabled>Register</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mt-auto py-2">
+    <div class="container-fluid">
+      <small class="text-muted">Copyright &copy; Joan Chirinos, 2019</small>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='landing.js') }}"></script>
+  <script src="../static/landing.js"></script>
+</body>
+</html>
